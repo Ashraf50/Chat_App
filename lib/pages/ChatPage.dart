@@ -65,9 +65,7 @@ class _ChatPageState extends State<ChatPage> {
                     itemCount: massages_list.length,
                     itemBuilder: (context, index) {
                       return massages_list[index].id == user_details!.email
-                          ? ChatBubble(
-                              massage: massages_list[index],
-                            )
+                          ? ChatBubble(massage: massages_list[index])
                           : ChatBubbleFriend(massage: massages_list[index]);
                     },
                   ),
