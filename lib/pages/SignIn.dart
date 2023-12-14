@@ -35,37 +35,6 @@ class _SignInState extends State<SignIn> {
   final password_controller = TextEditingController();
   bool visibility = true;
   final formKey = GlobalKey<FormState>();
-
-  // Sign() async {
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return Center(
-  //           child: SpinKitFadingCircle(
-  //             color: Color.fromARGB(255, 57, 79, 98),
-  //             size: 160.0,
-  //           ),
-  //         );
-  //       });
-
-  //   try {
-  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //       email: email_controller.text,
-  //       password: password_controller.text,
-  //     );
-  //     showSnackBar(context, "successful");
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'user-not-found') {
-  //       showSnackBar(context, "incorrect Email");
-  //     } else if (e.code == 'wrong-password') {
-  //       showSnackBar(context, "incorrect password");
-  //     } else {
-  //       showSnackBar(context, e.code);
-  //     }
-  //   }
-  //   Navigator.pop(context);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
@@ -124,15 +93,14 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                CustomTExtField(
+                CustomTextfield(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: email_controller,
                   validator: (value) {
                     return value == null ? "Enter your Email" : null;
                   },
-                  lableText: "Enter Your Email",
+                  labelText: "Enter Your Email",
                   obscureText: false,
-                  keyboardType: TextInputType.emailAddress,
                   suffixIcon: IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -141,15 +109,14 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                CustomTExtField(
+                CustomTextfield(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: password_controller,
                   validator: (value) {
                     return value == null ? "Enter your password" : null;
                   },
-                  lableText: "Enter Your Password",
+                  labelText: "Enter Your Password",
                   obscureText: visibility,
-                  keyboardType: TextInputType.text,
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -187,6 +154,7 @@ class _SignInState extends State<SignIn> {
                             color: Color(0xffC7EDE6),
                             fontSize: 18,
                             decoration: TextDecoration.underline,
+                            decorationColor: Color(0xffC7EDE6),
                           ),
                         ),
                       ),

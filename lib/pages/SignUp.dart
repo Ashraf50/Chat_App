@@ -20,51 +20,7 @@ class _SignInState extends State<SignUp> {
   final password_controller = TextEditingController();
   final userName_controller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
   bool visibility = true;
-  // register() async {
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return SpinKitFadingCircle(
-  //           color: Color.fromARGB(255, 57, 79, 98),
-  //           size: 160.0,
-  //         );
-  //       });
-  //   try {
-  //     final user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-  //       email: email_controller.text,
-  //       password: password_controller.text,
-  //     );
-  //     // send data to database
-  //     CollectionReference users =
-  //         FirebaseFirestore.instance.collection("Users");
-  //     users
-  //         .doc(user.user!.uid)
-  //         .set(
-  //           {
-  //             'username': userName_controller.text,
-  //             'email': email_controller.text,
-  //             'password': password_controller.text,
-  //           },
-  //         )
-  //         .then(
-  //           (value) => print("User Added"),
-  //         )
-  //         .catchError((error) => print("Failed to add user: $error"));
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'weak-password') {
-  //       showSnackBar(context, "The password provided is to weak");
-  //     } else if (e.code == 'email-already-in-use') {
-  //       showSnackBar(context, "The account already exists");
-  //     } else {
-  //       showSnackBar(context, "Error");
-  //     }
-  //   } catch (e) {
-  //     showSnackBar(context, e.toString());
-  //   }
-  //   Navigator.pop(context);
-  // }
 
   @override
   void dispose() {
@@ -132,15 +88,14 @@ class _SignInState extends State<SignUp> {
                     ],
                   ),
                 ),
-                CustomTExtField(
+                CustomTextfield(
                   validator: (p0) {
                     return null;
                   },
                   autovalidateMode: AutovalidateMode.disabled,
                   controller: userName_controller,
-                  lableText: "Enter Username",
+                  labelText: "Enter Username",
                   obscureText: false,
-                  keyboardType: TextInputType.text,
                   suffixIcon: IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -150,7 +105,7 @@ class _SignInState extends State<SignUp> {
                     ),
                   ),
                 ),
-                CustomTExtField(
+                CustomTextfield(
                   validator: (value) {
                     return value != null && !EmailValidator.validate(value)
                         ? "Enter a valid email"
@@ -158,9 +113,8 @@ class _SignInState extends State<SignUp> {
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: email_controller,
-                  lableText: "Enter Your Email",
+                  labelText: "Enter Your Email",
                   obscureText: false,
-                  keyboardType: TextInputType.emailAddress,
                   suffixIcon: IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -169,7 +123,7 @@ class _SignInState extends State<SignUp> {
                     ),
                   ),
                 ),
-                CustomTExtField(
+                CustomTextfield(
                   validator: (value) {
                     return value!.length < 6
                         ? "Enter at least 6 character"
@@ -177,9 +131,8 @@ class _SignInState extends State<SignUp> {
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: password_controller,
-                  lableText: "Enter Your Password",
+                  labelText: "Enter Your Password",
                   obscureText: visibility,
-                  keyboardType: TextInputType.text,
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {

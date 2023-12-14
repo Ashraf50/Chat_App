@@ -17,7 +17,7 @@ class ResetPassword extends StatelessWidget {
           context: context,
           builder: (context) {
             return SpinKitFadingCircle(
-              color: Color.fromARGB(146, 12, 16, 49),
+              color: Color.fromARGB(146, 146, 147, 155),
               size: 160.0,
             );
           });
@@ -43,22 +43,22 @@ class ResetPassword extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomTExtField(
-              keyboardType: TextInputType.emailAddress,
-              lableText: "Enter Your Email",
-              obscureText: false,
-              suffixIcon: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.email,
-                  color: Colors.white,
-                ),
+          CustomTextfield(
+            labelText: "Enter Your Email",
+            obscureText: false,
+            suffixIcon: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.email,
+                color: Colors.white,
               ),
-              validator: (p0) {
-                return null;
-              },
-              controller: email_controller,
-              autovalidateMode: AutovalidateMode.disabled),
+            ),
+            validator: (p0) {
+              return null;
+            },
+            controller: email_controller,
+            autovalidateMode: AutovalidateMode.disabled,
+          ),
           SizedBox(
             height: 20,
           ),
