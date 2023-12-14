@@ -1,7 +1,6 @@
+import 'package:chat_app/bloc/Authbloc/auth_bloc.dart';
 import 'package:chat_app/pages/ChatPage.dart';
 import 'package:chat_app/pages/Home.dart';
-import 'package:chat_app/pages/cubit/Login_cubit/login_cubit.dart';
-import 'package:chat_app/pages/cubit/Register_cubit/register_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -25,15 +24,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => LoginCubit(),
-        ),
-        BlocProvider(
-          create: (context) => RegisterCubit(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => AuthBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {

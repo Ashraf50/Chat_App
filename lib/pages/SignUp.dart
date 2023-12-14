@@ -1,5 +1,5 @@
+import 'package:chat_app/bloc/Authbloc/auth_bloc.dart';
 import 'package:chat_app/pages/SignIn.dart';
-import 'package:chat_app/pages/cubit/Register_cubit/register_cubit.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +31,7 @@ class _SignInState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is RegisterLoading) {
           Center(
@@ -154,11 +154,11 @@ class _SignInState extends State<SignUp> {
                   buttonTitle: "Register",
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      BlocProvider.of<RegisterCubit>(context).SignUp(
-                        userName: userName_controller.text,
+                      BlocProvider.of<AuthBloc>(context).add(RegisterEvent(
+                        Username: userName_controller.text,
                         email: email_controller.text,
                         password: password_controller.text,
-                      );
+                      ));
                     } else {
                       showSnackBar(context, "check the email or password");
                     }

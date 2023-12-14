@@ -1,6 +1,6 @@
+import 'package:chat_app/bloc/Authbloc/auth_bloc.dart';
 import 'package:chat_app/pages/ResetPassword.dart';
 import 'package:chat_app/pages/SignUp.dart';
-import 'package:chat_app/pages/cubit/Login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -37,7 +37,7 @@ class _SignInState extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is LoginLoading) {
           Center(
@@ -165,10 +165,10 @@ class _SignInState extends State<SignIn> {
                   buttonTitle: "Login",
                   onTap: () {
                     if (formKey.currentState!.validate()) {
-                      BlocProvider.of<LoginCubit>(context).SignIn(
+                      BlocProvider.of<AuthBloc>(context).add(LoginEvent(
                         email: email_controller.text,
                         password: password_controller.text,
-                      );
+                      ));
                     } else {
                       showSnackBar(context, "Check the email & password");
                     }
